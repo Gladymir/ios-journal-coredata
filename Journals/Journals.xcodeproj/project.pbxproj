@@ -19,6 +19,9 @@
 		C237825224DB1D7900ACE5B3 /* Entry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C237825124DB1D7900ACE5B3 /* Entry+Convenience.swift */; };
 		C237825624DB1DF100ACE5B3 /* Journals.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C237825424DB1DF100ACE5B3 /* Journals.xcdatamodeld */; };
 		C237825D24DFBF7700ACE5B3 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C237825C24DFBF7700ACE5B3 /* EntryDetailViewController.swift */; };
+		C237825F24E47EE500ACE5B3 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C237825E24E47EE500ACE5B3 /* EntryController.swift */; };
+		C237826124E4813200ACE5B3 /* EntryRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C237826024E4813200ACE5B3 /* EntryRepresentation.swift */; };
+		C237826324E4856600ACE5B3 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C237826224E4856600ACE5B3 /* Date+String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		C237825524DB1DF100ACE5B3 /* Journals.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Journals.xcdatamodel; sourceTree = "<group>"; };
 		C237825B24DFB41F00ACE5B3 /* Journals 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Journals 2.xcdatamodel"; sourceTree = "<group>"; };
 		C237825C24DFBF7700ACE5B3 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
+		C237825E24E47EE500ACE5B3 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		C237826024E4813200ACE5B3 /* EntryRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRepresentation.swift; sourceTree = "<group>"; };
+		C237826224E4856600ACE5B3 /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 			children = (
 				C237823924DB1B6500ACE5B3 /* CreateEntryViewController.swift */,
 				C237824924DB1C5A00ACE5B3 /* EntriesTableViewController.swift */,
+				C237825E24E47EE500ACE5B3 /* EntryController.swift */,
 				C237825C24DFBF7700ACE5B3 /* EntryDetailViewController.swift */,
 			);
 			path = "View Controllers";
@@ -103,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				C237825124DB1D7900ACE5B3 /* Entry+Convenience.swift */,
+				C237826224E4856600ACE5B3 /* Date+String.swift */,
+				C237826024E4813200ACE5B3 /* EntryRepresentation.swift */,
 				C237825424DB1DF100ACE5B3 /* Journals.xcdatamodeld */,
 				C237824F24DB1D5300ACE5B3 /* CoreDataStack.swift */,
 			);
@@ -191,11 +200,14 @@
 			files = (
 				C237824A24DB1C5A00ACE5B3 /* EntriesTableViewController.swift in Sources */,
 				C237824D24DB1CE100ACE5B3 /* EntryTableViewCell.swift in Sources */,
+				C237825F24E47EE500ACE5B3 /* EntryController.swift in Sources */,
 				C237823A24DB1B6500ACE5B3 /* CreateEntryViewController.swift in Sources */,
 				C237825624DB1DF100ACE5B3 /* Journals.xcdatamodeld in Sources */,
 				C237825024DB1D5300ACE5B3 /* CoreDataStack.swift in Sources */,
 				C237823624DB1B6500ACE5B3 /* AppDelegate.swift in Sources */,
 				C237823824DB1B6500ACE5B3 /* SceneDelegate.swift in Sources */,
+				C237826324E4856600ACE5B3 /* Date+String.swift in Sources */,
+				C237826124E4813200ACE5B3 /* EntryRepresentation.swift in Sources */,
 				C237825D24DFBF7700ACE5B3 /* EntryDetailViewController.swift in Sources */,
 				C237825224DB1D7900ACE5B3 /* Entry+Convenience.swift in Sources */,
 			);

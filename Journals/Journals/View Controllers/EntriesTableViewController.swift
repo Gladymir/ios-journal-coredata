@@ -11,6 +11,8 @@ import CoreData
 
 class EntriesTableViewController: UITableViewController {
     
+    let entryController = EntryController()
+    
 //    var entries: [Entry] {
 //        let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
 //        let context = CoreDataStack.shared.mainContext
@@ -21,11 +23,18 @@ class EntriesTableViewController: UITableViewController {
 //            return []
 //        }
 //    }
+    @IBAction func refresh(_ sender: Any) {
+        self.entryController.fetchEntriesFromServer() { (_) in
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+            }
+        }
+    }
 
     lazy var fetchedResultsController: NSFetchedResultsController<Entry> = {
         let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "mood", ascending: true),
-        NSSortDescriptor(key: "name", ascending: true)]
+        NSSortDescriptor(key: "timestamp", ascending: true)]
         
         let context = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -71,7 +80,9 @@ class EntriesTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EntryTableViewCell.reuseIdentifier, for: indexPath) as? EntryTableViewCell else {
             fatalError("Can't dequeue cell of type \(EntryTableViewCell.reuseIdentifier)")
         }
-        cell.entry = fetchedResultsController.object(at: indexPath)
+        let entry = fetchedResultsController.object(at: indexPath)
+       // cell.entry = fetchedResultsController.object(at: indexPath)
+        cell.entry = entry
         // Configure the cell...
 
         return cell
@@ -120,15 +131,27 @@ class EntriesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
+        if segue.identifier == "EntryDetailSegue" {
+                if let detailVC = segue.destination as? EntryDetailViewController,
+                    let indexPath = tableView.indexPathForSelectedRow {
+                    detailVC.entry = fetchedResultsController.object(at: indexPath)
+                    detailVC.entryController = entryController
+                } else if segue.identifier == "CreateEntrySegue" {
+                    if let navC = segue.destination as? UINavigationController,
+                        let createEntryVC = navC.viewControllers.first as? CreateEntryViewController {
+                        createEntryVC.entryController = entryController
+                    }
+                }
+            }
+        }
+    
 
 }
 

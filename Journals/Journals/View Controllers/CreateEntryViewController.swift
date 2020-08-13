@@ -10,6 +10,8 @@ import UIKit
 
 class CreateEntryViewController: UIViewController {
     
+    var timestamp = NSDate.now
+    var entryController: EntryController?
     
     @IBOutlet weak var titleTextField: UITextField!
     
@@ -20,6 +22,7 @@ class CreateEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        titleTextField.becomeFirstResponder()
     }
    
     @IBAction func cancel(_ sender: UIButton) {
@@ -33,7 +36,10 @@ class CreateEntryViewController: UIViewController {
         let moodPriorityIndex = moodSegmentControl.selectedSegmentIndex
         let mood = MoodPriority.allCases[moodPriorityIndex]
         let timestamp = Date()
-        Entry(title: entryTitle, bodyText: entryDetail,timestamp: timestamp, mood: mood)
+       // Entry(title: entryTitle, bodyText: entryDetail,timestamp: timestamp, mood: mood)
+        let entry = Entry(title: entryTitle, bodyText: entryDetail, timestamp: timestamp, mood: mood, context: CoreDataStack.shared.mainContext)
+        entryController?.put(entry: entry, completion: { (_) in
+        })
         
         do {
             try CoreDataStack.shared.mainContext.save()

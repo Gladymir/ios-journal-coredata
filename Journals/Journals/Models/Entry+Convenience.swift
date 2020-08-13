@@ -29,5 +29,37 @@ extension Entry {
     self.timestamp = timestamp
     self.identifier = identifier.uuidString
     self.mood = mood.rawValue
-}
-}
+    }
+    
+  @discardableResult convenience init?(entryRepresentation: EntryRepresentation,
+                                             context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+            guard let mood = MoodPriority.init(rawValue: entryRepresentation.mood),
+                let identifier = UUID(uuidString: entryRepresentation.identifier) else {
+                    return nil
+            }
+
+    self.init(title: entryRepresentation.title,
+              bodyText: entryRepresentation.bodyText ?? "",
+              timestamp: entryRepresentation.timestamp,
+              identifier: identifier,
+    mood: mood,
+    context: context)
+        }
+
+        var entryRepresentation: EntryRepresentation? {
+
+            guard let title = title,
+                let mood = mood,
+                let timestamp = timestamp else { return nil }
+
+            let id = identifier ?? UUID().uuidString
+
+            return EntryRepresentation(bodyText: bodyText,
+                                       identifier: id,
+                                       mood: mood,
+                                       timestamp: timestamp,
+                                       title: title)
+
+        }
+
+    }

@@ -12,6 +12,7 @@ class EntryDetailViewController: UIViewController {
     
     var entry: Entry?
     var wasEdited = false
+    var entryController: EntryController?
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var moodController: UISegmentedControl!
@@ -34,6 +35,26 @@ class EntryDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+//    @objc func save() {
+//        guard let title = titleTextField.text,
+//            !title.isEmpty,
+//            let bodyText = entryTextView.text else { return }
+//
+//        let moodPriorityIndex = moodSegmentControl.selectedSegmentIndex
+//        let mood = MoodPriority.allCases[moodPriorityIndex]
+//        let timestamp = Date()
+//
+//        Entry(title: title, bodyText: bodyText, timestamp: timestamp, mood: mood, context: CoreDataStack.shared.mainContext)
+//
+//        do {
+//            try CoreDataStack.shared.mainContext.save()
+//            navigationController?.dismiss(animated: true, completion: nil)
+//        } catch {
+//            NSLog("Error saving managed object context: \(error)")
+//        }
+//
+//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
